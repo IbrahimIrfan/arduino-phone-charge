@@ -17,8 +17,8 @@ void loop() {
   lightReading = analogRead(lightPin); //Write the value of the photoresistor to the serial monitor.
 
   Serial.println(lightReading);
-  // wait for the servo to get there
-  if (lightReading > 200){
+  if (lightReading > 200){ // if the samsung phone green light is on (done charging)
+    // move the servo to knock the phone off charging
     if (flag == 0){
       Serial.println("Move");
       myServo.write(0);
@@ -27,7 +27,6 @@ void loop() {
       flag = 1;
     } else {
        myServo.write(90);
-
     }
   }
 }
